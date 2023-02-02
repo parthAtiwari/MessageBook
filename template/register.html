@@ -1,0 +1,127 @@
+{% include "index.html" %}
+<head>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' >
+</head>
+
+<body>
+    
+    <div class="homewall">
+        <p>Getting Started sharing your messages</p>
+        
+        <a href="/user/login"  class="btn">Login</a>
+    </div>
+    <div class="registerform">
+        <form method="POST" action="/user/postregister">
+            {% csrf_token %}
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" placeholder='Email'><br>
+
+            <label for="first_name">First name:</label><br>
+            <input type="text" id="first_name" name="first_name" placeholder='First Name'><br>
+
+            <label for="last_name">Last name:</label><br>
+            <input type="text" id="last_name" name="last_name" placeholder='Last Name'><br>
+
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" placeholder='Username'><br>
+
+            <label for="password">Create Password</label><br>
+            <input type="password" id="password" name="password" placeholder='Password'><br>
+            
+            <label for="confirmpassword">Confirm Password</label><br>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder='Confirm your password'><br>
+            
+            <label for="date_of_birth">Date of Birth</label><br>
+            <input type="text" id="date_of_birth" name="date_of_birth" placeholder='YYYY-MM-DD'><br>
+
+            <input type="radio" id="M" name="gender" value="M">
+            <label for="M">Male</label><br>
+            <input type="radio" id="F" name="gender" value="F">
+            <label for="F">Female</label><br>
+
+            <button type="submit" name="btn" >Register</button>
+            
+            
+        </form>
+            
+        
+    </div>
+    
+    <style>
+        .registerform{
+            margin-top: 5%;
+            margin-left:25%;
+
+        }
+        
+        input{
+            height: 7vh;
+            width: 35vw;
+            
+        }
+        label{
+            color:white;
+            font-size: 20px;
+            font-family: "Cormorant Sc",serif;
+        }
+        button{
+            color: white;
+            height:5vh;
+            width: 25vw;
+            text-align: center;
+            cursor: pointer;
+            background-color: rgb(44, 212, 137);
+            border: 1px dotted rgb(55, 12, 108)
+            /* background-color: rgb(55, 170, 124); */
+            
+        }
+       
+        .homewall{
+            margin-top: 10vh;
+        }
+    
+        .homewall a{
+        
+        display: inline-block;
+        
+        font-size:20px;
+        color: #fff;
+        border:1px solid white;
+    
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background-color: transparent;
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+        padding: 12px 50px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        letter-spacing: 1.5px;
+        margin-top: 2vh;
+        text-decoration: none;
+        margin-left: 25%;
+    
+        }
+        
+        .homewall p{
+            text-align: center;
+            font-family: "Poiret One";
+            color: white;
+            font-size: 35px;
+        }
+        .homewall a:hover{
+            background-color:rgba(216, 230, 222, 0.4);
+            
+        
+            
+        }
+    </style>
+       
+</body>
+
+
+    
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessageBook</title>
+    {% load static %}
+
+    
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' >
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Aboreto&family=Cinzel&family=Megrim&family=Allura&family=Caveat&family=Inspiration&family=Cormorant+SC&family=Poiret+One&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    
+
+</head>
+
+<body>
+    
+    <header>
+        <h1>MessageBook<sub>Bringing closer ideas!</sub></h1>
+    </header>
+    
+    <div class="popup">
+        {% if error %}
+            <div class='warning'>
+            
+            
+                <p>{{error}}</p>
+            
+                
+        
+            </div>
+        {% endif %}
+        {% if message %}
+        <div class='success'>
+        
+            <p>{{message}}</p>
+        </div>
+        {% endif %}
+
+    </div>
+    
+    
+    
+   
+</body>
+
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        background-color: rgb(5, 48, 67);
+        width: 100vw;
+
+        /* background-image: linear-gradient(to right,rgb(41, 21, 78),rgb(3, 38, 69)); */
+    }
+    header {
+        background:transparent;
+        position: -webkit-sticky;
+        position: sticky;
+        top:0;
+        height:auto;
+        padding: 1%;
+        width: 100vw;
+        background-color: white;
+    }
+    
+    header h1{
+        
+        font-family: 'Cormorant SC', serif;
+        font-size: 5vh;
+        text-align: left;
+        font-weight: 500;
+        padding: 1px;
+        margin-top:0px;
+        position: sticky;
+        z-index: 1000;
+        background: -webkit-linear-gradient(#eee, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    header h1 sub{
+        font-family: "Allura";
+    }
+
+    
+.popup{
+    width: 100vw;
+    font-size: 25px;
+    
+    color: white;
+}
+.popup .warning p{
+    background-color: rgb(213, 62, 75);
+    margin-top:0;
+    padding: 1%;
+}
+.popup .success p{
+    background-color: rgb(62, 213, 170);
+    margin-top:0;
+    padding:1%;
+
+}
+
+
+</style>

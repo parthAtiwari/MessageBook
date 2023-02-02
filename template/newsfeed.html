@@ -1,0 +1,280 @@
+{% include 'index.html' %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<body>
+    <div class="loginform">
+        
+        <form method="POST" action="/feed/createpost">
+            {% csrf_token %}
+                
+    
+    
+    
+            <label for="message">Write Your Post</label><br>
+            <input type="text" id="message" name="message" placeholder='Message'><br>
+    
+    
+            <button type="submit" >Post</button>
+                
+                
+        </form>
+       
+        
+    </div>
+    <div class="homewall">
+        
+        
+        
+        <p>{{user.first_name}}</p>
+        <a href="/user/postlogout" class="btn">Logout</a>
+        
+    </div>
+    
+    <div class="popup">
+        {% if error %}
+            <div class='warning'>
+            
+            
+                <p>{{error}}</p>
+            
+                
+        
+            </div>
+        {% endif %}
+
+        {% if message %}
+            <div class='success'>
+            
+                <p>{{message}}</p>
+            </div>
+        {% endif %}
+
+    </div>
+    
+    <div class='posts'>
+        {% if posts %}
+        
+            {% for p in posts %}
+                <h3>{{p.name}}</h3>
+                <div class="msg">
+                    
+                    <p>{{p.msg}}</p>
+                    
+                </div>
+                <div class="likes">
+                    <form method="POST" action="/feed/like">
+                       
+                        {% if p.likestatus %}
+                            <button type ='submit' class="likebtn-green"  name="postid" value={{p.postid}}><i class="fa fa-thumbs-up fa-lg" style="color: rgb(0,255,191)" aria-hidden="true" ></i></button>
+                        {% else %}
+                            <button type ='submit' class="likebtn-white" name="postid" value={{p.postid}}><i class="fa fa-thumbs-up fa-lg" style="color: white;" aria-hidden="true" ></i></button>
+                        {% endif %}
+
+        
+                    
+
+                    </form>
+                    
+                    <p>{{p.likes}} likes</p>
+                    
+
+                </div>
+                
+                
+                
+            {% endfor %}
+        
+
+        
+        {% endif %}
+    </div>
+    
+    
+    <style>
+        
+        form{
+            margin-left:0;
+            
+            background:transparent;
+            
+            
+    
+        }
+        .loginform{
+            position:fixed;
+            /* width: 100vw; */
+            
+          
+            
+            
+            
+            
+
+        }
+        input{
+            height:15vh;
+            width: 20vw;
+            border-radius: 70px;
+            border: 0px solid;
+            padding: 5px;
+            
+        }
+        label{
+            color:white;
+            font-size: 20px;
+            font-family: "Cormorant Sc",serif;
+        }
+        .loginform form button{
+            margin-left: 2%;
+            border: 0px solid;
+            color: white;
+            height:7vh;
+            width: 15vw;
+            text-align: center;
+            margin-top: 2%;
+            cursor: pointer;
+            background-image: linear-gradient(to right,rgb(111, 255, 200),rgb(173, 254, 162));
+            font-size: 20px;
+                /* background-color: rgb(55, 170, 124); */
+                
+        }
+        .posts form button {
+            cursor: pointer;
+            outline: 0;
+            background-color: transparent;
+            border: transparent;
+
+        }
+        .posts form button:hover {
+            cursor: pointer;
+            outline: 0;
+            
+            background-color: transparent;
+            border: transparent;
+
+        }
+       
+        /* .posts button .likebtn-white{
+            cursor: pointer;
+            outline: 0;
+            color: transparent;
+            border: transparent;
+        }
+        .posts button .likebtn-green{
+            cursor: pointer;
+            outline: 0;
+            color: rgb(0, 255, 191);
+            border: transparent;
+        } */
+        
+        .posts{
+            margin-top: 5%;
+        }
+        .posts .msg{
+            padding: 1%;
+           
+            width: 40%;
+            text-align:center;
+            margin-left: 25%;
+            margin-top: 0;
+            border-radius: 70px;
+            
+            font-size:30px; 
+            background-color:rgb(86, 184, 163);
+            color:rgb(255, 255, 255)
+            
+        }
+        .posts .likes{
+            color: white;
+            font-size: 15px;
+            margin-left: 30%;
+            margin-top: 0;
+
+        }
+        .popup{
+            width: 100vw;
+            font-size: 25px;
+            
+        }
+        .popup .warning p{
+            background-color: rgb(213, 62, 75);
+            margin-top:0;
+            padding: 1%;
+        }
+        .popup .success p{
+            background-color: rgb(62, 213, 170);
+            margin-top:0;
+            padding:1%;
+
+}
+       
+        .fa {
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+        
+        }
+
+        .fa:hover {
+        color: rgb(0, 255, 191);
+}
+        
+        .posts h3{
+            
+            color: white;
+            margin-left: 25%;
+            color: rgb(182, 255, 133);
+            
+        }
+
+
+        .homewall{
+            margin-top: 0;
+            
+            
+
+        }
+    
+        .homewall a{
+        
+        display: inline-block;
+        
+        font-size:20px;
+        color: #fff;
+        border:1px solid white;
+    
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background-color: transparent;
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+        padding: 10px 40px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        letter-spacing: 1.5px;
+        margin-left: 65%;
+        text-decoration: none;
+       
+    
+        }
+        
+        .homewall p{
+            
+            font-family: "Poiret One";
+            color: white;
+            font-size: 35px;
+            margin-left: 65%;
+           
+        }
+        .homewall a:hover{
+            background-color:rgba(216, 230, 222, 0.4);
+            
+        
+            
+        }
+    
+    </style>
+</body>

@@ -1,0 +1,107 @@
+{% include 'index.html'%}
+<body>
+    <div class="homewall">
+        <p>Getting Started sharing your messages</p>
+        <a href="/user/register" class="btn">Register</a>
+        
+    </div>
+    <div class="loginform">
+        <form method="POST" action="/user/postlogin">
+            {% csrf_token %}
+            
+
+
+
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" placeholder='Username'><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" placeholder='Your Password'><br>
+           
+            
+            
+
+            <button type="submit" name="btn" >Login</button>
+            
+            
+        </form>
+            
+        
+    </div>
+    
+    <style>
+        .loginform{
+            margin-left:25%;
+            margin-top: 5%;
+
+        }
+
+        input{
+            height: 7vh;
+            width: 35vw;
+            
+        }
+        label{
+            color:white;
+            font-size: 20px;
+            font-family: "Cormorant Sc",serif;
+        }
+        button{
+            color: white;
+            height:7vh;
+            width: 20vw;
+            text-align: center;
+            margin-top: 2%;
+            cursor: pointer;
+            background-color: rgb(166, 129, 212);
+            border: 1px dotted rgb(55, 12, 108)
+            /* background-color: rgb(55, 170, 124); */
+            
+        }
+
+     
+        .homewall{
+            margin-top: 10vh;
+        }
+    
+        .homewall a{
+        
+        display: inline-block;
+        
+        font-size:20px;
+        color: #fff;
+        border:1px solid white;
+    
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background-color: transparent;
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+        padding: 12px 50px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        letter-spacing: 1.5px;
+        margin-top: 2vh;
+        text-decoration: none;
+        margin-left: 25%;
+    
+    }
+    
+        .homewall p{
+            text-align: center;
+            font-family: "Poiret One";
+            color: white;
+            font-size: 35px;
+        }
+        .homewall a:hover{
+            background-color:rgba(216, 230, 222, 0.4);
+            
+        
+            
+        }
+    
+       
+    </style>
+</body>
